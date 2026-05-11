@@ -45,11 +45,92 @@ const DATA = {
 
   // Exemplo de base local (troque pela sua fonte depois)
   volunteersByDept: {
-    "EVENTOS": ["Jose Santos", "Maria Consentino", "Roberto Leonardo"],
-    "JUNIORES": ["Maria Consentino", "João Pedro", "Ana Luiza"],
-    "KIDS": ["Roberto Leonardo", "Beatriz Lima"],
-    // Demais departamentos começam vazios (você pode preencher depois)
-  }
+    
+"CAFÉ": [
+    "Ana Ribeiro",
+    "Lucas Mendes",
+    "Patrícia Souza"
+  ],
+
+  "CONCIERGE": [
+    "Eduardo Nogueira",
+    "Renata Campos",
+    "Fábio Azevedo"
+  ],
+
+  "CRIAÇÃOEVENTOS": [
+    "Jose Santos",
+    "Maria Consentino",
+    "Roberto Leonardo"
+  ],
+
+  "JUNIORES": [
+    "Maria Consentino",
+    "João Pedro",
+    "Ana Luiza"
+  ],
+
+  "KIDS": [
+    "Roberto Leonardo",
+    "Beatriz Lima",
+    "Camila Rocha"
+  ],
+
+  "LOUVOR": [
+    "Daniel Torres",
+    "Marcos Vinícius",
+    "Fernanda Lopes"
+  ],
+
+  "NEXT": [
+    "Thiago Martins",
+    "Juliana Pacheco",
+    "Rafael Moreira"
+  ],
+
+  "PRODUÇÃO": [
+    "André Costa",
+    "Bruno Almeida",
+    "Carolina Freitas"
+  ],
+
+  "UREACH": [
+    "Samuel Ferreira",
+    "Isabela Cunha",
+    "Gustavo Rangel"
+  ],
+
+  "USHER": [
+    "Paulo Henrique",
+    "Vanessa Teixeira",
+    "Leonardo Farias"
+  ],
+
+  "VIP": [
+    "Renan Batista",
+    "Camille Duarte",
+    "Guilherme Prado"
+  ],
+
+  "VOLUNTÁRIOS": [
+    "Cristiane Moura",
+    "Felipe Rocha",
+    "Natalia Guedes"
+  ],
+
+  "YOUTH": [
+    "Matheus Oliveira",
+    "Bianca Rezende",
+    "Caio Neves"
+  ],
+
+  "Facilities": [
+    "Carlos Alberto",
+    "Sérgio Pimenta",
+    "Márcia Helena"
+  ]
+}
+
 };
 
 // Estado simples da UI
