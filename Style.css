@@ -74,14 +74,14 @@ nav a {
   position: relative;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
-  color: #fff;
+  color: #767575;
   text-decoration: none;
   padding: 10px 15px;
   margin: 0 15px;
   background: rgba(255,255,255,0.2);
   border-radius: 4px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(159, 48, 48, 0.1);
 }
 
 nav a::before {

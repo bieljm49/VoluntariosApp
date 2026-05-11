@@ -13,7 +13,8 @@ const DATA = {
   departments: [
     "CAFÉ",
     "CONCIERGE",
-    "CRIAÇÃOEVENTOS",
+    "CRIAÇÃO",
+    "EVENTOS",
     "JUNIORES",
     "KIDS",
     "LOUVOR",
@@ -24,7 +25,7 @@ const DATA = {
     "VIP",
     "VOLUNTÁRIOS",
     "YOUTH",
-    "Facilities"
+    "FACILITIES"
   ],
 
   // Enumerados
@@ -44,7 +45,7 @@ const DATA = {
 
   // Exemplo de base local (troque pela sua fonte depois)
   volunteersByDept: {
-    "CRIAÇÃOEVENTOS": ["Jose Santos", "Maria Consentino", "Roberto Leonardo"],
+    "EVENTOS": ["Jose Santos", "Maria Consentino", "Roberto Leonardo"],
     "JUNIORES": ["Maria Consentino", "João Pedro", "Ana Luiza"],
     "KIDS": ["Roberto Leonardo", "Beatriz Lima"],
     // Demais departamentos começam vazios (você pode preencher depois)
