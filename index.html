@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHECK IN | Controle de Voluntários</title>
+
+  <!-- Seu CSS base -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CSS extra (pode ser um arquivo separado ui.css OU colar no fim do style.css) -->
+  <link rel="stylesheet" href="ui.css" />
+
+  <!-- Fonte (opcional, já que você usa Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo"/>
+    <h1>Controle de Voluntários | CHECK IN</h1>
+   
+    <!-- Barra superior simples com atalhos (opcional) -->
+    <nav>
+      <a href="#" class="nav-link active" id="navHome" onclick="UI.goHome(); return false;">Departamentos</a>
+      
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- =========================
+         TELA 1 - DEPARTAMENTOS
+    ========================== -->
+    <section class="section active" id="screenDepartments">
+      <div class="screen-head">
+        <h2>Escolha o Departamento</h2>
+
+        <div class="search-wrap">
+          <div class="search-bar">
+            <span class="icon" aria-hidden="true">🔎</span>
+            <input
+              id="deptSearch"
+              type="text"
+              placeholder="Buscar departamento..."
+              autocomplete="off"
+            />
+            <button class="btn-clear" id="clearDeptSearch" title="Limpar busca" aria-label="Limpar busca">
+              ✕
+            </button>
+          </div>
+          <p class="hint">Dica: digite parte do nome para filtrar os quadradinhos.</p>
+        </div>
+      </div>
+
+      <div id="deptGrid" class="dept-grid" aria-live="polite"></div>
+
+      <div class="empty-state" id="deptEmpty" style="display:none;">
+        <div class="card">
+          <h3>Nenhum departamento encontrado</h3>
+          <p>Tente buscar com outro termo.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         TELA 2 - VOLUNTÁRIOS
+    ========================== -->
+    <section class="section" id="screenVolunteers">
+      <div class="topbar">
+        <button class="topbar-btn" id="btnBack" title="Voltar" aria-label="Voltar">
+          ← Voltar
+        </button>
+
+        <div class="topbar-title">
+          <h2 id="deptTitle">DEPARTAMENTO</h2>
+          <p class="sub" id="deptSubtitle">Selecione um voluntário e registre a presença</p>
+        </div>
+
+        <button class="topbar-btn primary" id="btnNewVolunteer" title="Novo voluntário" aria-label="Novo voluntário">
+          + Novo voluntário
+        </button>
+      </div>
+
+      <div class="panel-grid">
+        <!-- Lista / Busca de voluntários -->
+        <div class="card">
+          <h3>Buscar voluntário</h3>
+
+          <div class="search-bar compact">
+            <span class="icon" aria-hidden="true">🔎</span>
+            <input
+              id="volSearch"
+              type="text"
+              placeholder="Digite o nome do voluntário..."
+              autocomplete="off"
+            />
+            <button class="btn-clear" id="clearVolSearch" title="Limpar busca" aria-label="Limpar busca">
+              ✕
+            </button>
+          </div>
+
+          <div class="list-wrap" id="volList" aria-live="polite"></div>
+
+          <div class="empty-state" id="volEmpty" style="display:none;">
+            <p class="hint">Nenhum voluntário encontrado. Use <strong>+ Novo voluntário</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Formulário de registro -->
+        <div class="card">
+          <h3>Registro</h3>
+
+          <div class="selected-box" id="selectedBox">
+            <p class="hint">Nenhum voluntário selecionado.</p>
+          </div>
+
+          <form id="checkinForm" autocomplete="off">
+            <div class="form-group">
+              <label>Presente</label>
+              <div class="toggle-row" role="group" aria-label="Presente">
+                <button type="button" class="btn-aprovar toggle" data-value="Sim" id="btnPresSim">Sim</button>
+                <button type="button" class="btn-reprovar toggle" data-value="Não" id="btnPresNao">Não</button>
+              </div>
+              <small class="hint">Clique em <strong>Sim</strong> ou <strong>Não</strong>.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="justSelect">Justificativa</label>
+              <select id="justSelect">
+                <!-- preenchido pelo JS -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="obs">Observações (opcional)</label>
+              <textarea id="obs" rows="3" placeholder="Se quiser, detalhe aqui..."></textarea>
+            </div>
+
+            <div class="actions-row">
+              <button type="submit" id="btnSave">Salvar</button>
+              <button type="button" class="btn-pendente" id="btnClear">Limpar</button>
+            </div>
+          </form>
+
+          <div id="saveFeedback" class="hint" style="margin-top:10px;"></div>
+        </div>
+      </div>
+
+      <!-- Resumo rápido (opcional) -->
+      <div class="card-resumo" id="resumeCard" style="display:none;">
+        <div>✅ Último registro salvo</div>
+        <div id="resumeText" style="margin-top:8px;"></div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       MODAL - NOVO VOLUNTÁRIO
+  ========================== -->
+  <div class="popup-confirm" id="modalNewVolunteer" style="display:none;">
+    <div class="popup-box">
+      <h3>Novo voluntário</h3>
+
+      <form id="newVolunteerForm">
+        <div class="form-group">
+          <label for="newVolName">Nome</label>
+          <input id="newVolName" type="text" placeholder="Ex: Maria Consentino" required />
+        </div>
+
+        <div class="form-group">
+          <label for="newVolDept">Departamento</label>
+          <input id="newVolDept" type="text" disabled />
+          <small class="hint">O departamento já vem preenchido.</small>
+        </div>
+
+        <div class="actions-row modal-actions">
+          <button type="submit" class="popup-confirmar">Salvar</button>
+          <button type="button" class="popup-cancelar" id="btnCancelNew">Cancelar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+``
