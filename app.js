@@ -58,7 +58,15 @@ const DATA = {
     "Fábio Azevedo"
   ],
 
-  "CRIAÇÃOEVENTOS": [
+  "CRIAÇÃO": [
+    "João Santos",
+    "Maria Eduarda",
+    "Roberto José"
+  ],
+
+    
+
+  "EVENTOS": [
     "Jose Santos",
     "Maria Consentino",
     "Roberto Leonardo"
