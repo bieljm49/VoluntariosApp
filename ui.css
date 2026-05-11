@@ -22,7 +22,7 @@
   gap: 8px;
   background: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 8px 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
 }
@@ -76,7 +76,7 @@
   display: grid;
   align-items: center;
   text-align: center;
-  border-left: 6px solid #2575fc;
+  border-left: 6px solid rgba(189, 12, 12, 0.922);
 }
 
 .dept-card:hover {
